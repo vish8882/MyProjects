@@ -1,0 +1,116 @@
+body {
+	margin: 13px 0px 10px 0px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #660000;
+	
+}
+
+#header {
+	font-size: 40px;
+	width: 100%;
+	height: 30px;
+	text-decoration: blink;
+	font-family:Jokerman ;
+	color: FF6600;
+	font-weight: bolder;
+}
+
+#ab{
+font-size: 40px;
+	width: 100%;
+	height: 30px;
+	text-decoration: blink;
+	color: FF6600;
+	font-weight: bolder;
+	background-color: #ffffff;
+	filter:alpha(opacity=70);
+}
+
+#a{
+font-size: 20px;
+	width: 100%;
+	height: 10px;
+	text-decoration: blink;
+	color: 24242A;
+	background-color: #ffffff;
+	filter:alpha(opacity=70);
+}
+
+#content {
+	font-size: 20px;
+	color:#0000ff;
+	
+}
+
+
+#menu {
+	background-color: #CCCCCC;
+	border-bottom: 1px dotted #999999;
+	font-size: 18px;
+	font-weight: bold;
+	height: 20px;
+	width: 50 px;
+	border: 1;
+}
+
+#login {
+	background-color: #6699FF;
+	border-bottom: 1px dotted #999999;
+	font-size: 16px;
+	font-weight: bold;
+	height: 20px;
+	width: 50 px;
+}
+
+#contact {
+	background-color: #99CCFF;
+	padding: 5px;
+	text-align: center;
+	font-size: 12px;
+}
+
+.RED {
+	font-weight: bold;
+	color: red;
+}
+
+TH.TITLE {
+	background-color: #EF8429;
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+TD.MESSAGE {
+	font-weight: bold;
+	color: black;
+}
+
+TD {
+	font-size: 15px;
+	font-weight:bold;
+}
+
+.header {
+	opacity: 0.5;
+	filter: alpha(opacity = 50);
+}
+a:link{
+	color:red;
+}
+a:visited
+{
+	color:purple;
+}
+a:hover {
+	color: black;
+}
+
+
+.id1
+{
+	color:#FF3333;
+	font-family:algerian;
+	font-weight: normal;
+	font-size: large;
+	
+}
