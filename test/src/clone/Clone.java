@@ -1,10 +1,25 @@
 package clone;
 
-public class Clone implements Cloneable{
+public class Clone{
+public static void main(String[] args) {
+	try{
+	CloneTest c1 = new CloneTest(1,"Vishal");
+	CloneTest c2=(CloneTest)c1.clone();
+    c1.display();
+    c2.display();
+	}catch (CloneNotSupportedException e) {
+		System.out.println("Cloning not supported");
+	}
+	finally {
+		System.out.println("Finally");
+	}
+}
+}	
+class CloneTest implements Cloneable {
 	int index;
 	String name;
 	
-	Clone(int index, String name) {
+	CloneTest(int index, String name) {
 		System.out.println("Clone class");
 		this.index=index;
 		this.name=name;
@@ -17,21 +32,7 @@ public class Clone implements Cloneable{
 	
 	public Object clone() throws CloneNotSupportedException
 	{
-		
 		return super.clone();
-	}
-public static void main(String[] args) {
-	try{
-	Clone c1 = new Clone(1,"Vishal");
-	Clone c2=(Clone)c1.clone();
-    c1.display();
-    c2.display();
-	}catch (CloneNotSupportedException e) {
-		System.out.println("Cloning not supported");
-	}
-	finally {
-		System.out.println("Finally");
-	}
+	}	
 }
-	
-}
+
