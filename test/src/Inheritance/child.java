@@ -28,7 +28,7 @@ class Inheritance extends SuperInheritance{
 		System.out.println("Super Class");
 	}
 	
-	static void method () throws RuntimeException
+	private static void method () throws RuntimeException
 	{
 		System.out.println("------------");
 		System.out.println("Super method");
@@ -47,14 +47,15 @@ public child()
 	System.out.println("Child class");
 }
 
-static void method ()throws RuntimeException
+public static void method ()throws RuntimeException
 {
 	System.out.println("Child method");
 }
-public static void main(String[] args) throws ArithmeticException {
+public static void main(String[] args)  {
 	Inheritance I = new child();
-	I.method();
+	
 
 	}
 
 }
+ 

@@ -2,7 +2,10 @@
 /Employee.class
 /Inheritance/
 /MyClass.class
+/Process.class
+/ProcessNew.class
 /RefreshURL.class
+/ShutDownHookImpl.class
 /classloader/
 /clone/
 /collections/
@@ -10,7 +13,9 @@
 /datastructures/
 /excel/
 /interfaces/
+/java8/
 /java_array/
+/junit/
 /objecttest/
 /question/
 /searches/
@@ -19,3 +24,5 @@
 /test/
 /thread/
 /xml/
+/EnumExample.class
+/FreshJuiceSize.class

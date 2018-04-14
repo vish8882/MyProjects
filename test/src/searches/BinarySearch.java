@@ -39,10 +39,10 @@ public class BinarySearch {
 	
 	
 	
-	 void searchBinary(){
+	public static int searchBinary(int number){
 
 int [] arr={1,2,3,4,5,6,7,8,9,14,19,20,24,25,29,33,35,39};
-	int number=1;
+	//int number=3;
 	int mid=0;
 	int start=0;
 	int end=arr.length-1;
@@ -52,7 +52,7 @@ int [] arr={1,2,3,4,5,6,7,8,9,14,19,20,24,25,29,33,35,39};
 		
 		if(number==arr[mid]){
 			System.out.println("Number found at :"+mid);
-			break;
+			return mid;
 		}
 		if(number<arr[mid]){
 			end=mid-1;
@@ -63,6 +63,6 @@ int [] arr={1,2,3,4,5,6,7,8,9,14,19,20,24,25,29,33,35,39};
 		}
 	}
 	
-	
+	return -1;
 	 }
 }

@@ -71,15 +71,15 @@ class ThreadPoolMain extends Thread{
 
 public class ThreadPoolTest implements Runnable{
 	
-	/*static CyclicBarrier b = new CyclicBarrier(4,new Runnable() {
+	static CyclicBarrier b = new CyclicBarrier(2,new Runnable() {
 		
 		@Override
 		public void run() {
 			System.out.println("Ended program");
-			System.exit(0);
+			//System.exit(0);
 			
 		}
-	});*/
+	});
 	static CountDownLatch latch ;
 	public BlockingQueue<Employee> empQueue;
 	public int number=6;
@@ -104,16 +104,16 @@ public class ThreadPoolTest implements Runnable{
 			
 		 System.out.println(e.getName()+ " " + e.getPlace());
 	            Thread.sleep(1000);
-	            latch.countDown();
-	            //System.out.println("Waiting for barrier");
-	            //b.await();
-	            //System.out.println("Crossed the barrier");
+	           // latch.countDown();
+	            System.out.println("Waiting for barrier");
+	            b.await();
+	            System.out.println("Crossed the barrier");
 	        } catch (InterruptedException ex) {
 	            ex.printStackTrace();
-	        } /*catch (BrokenBarrierException e1) {
+	        } catch (BrokenBarrierException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
-			}*/
+			}
 		
 	}
 	
@@ -129,10 +129,10 @@ public class ThreadPoolTest implements Runnable{
 		BlockingQueue<Employee> empQueue= new LinkedBlockingQueue<Employee> ();
 		empQueue.put(e1);
 		empQueue.put(e2);
-		empQueue.put(e3);
+/*		empQueue.put(e3);
 		empQueue.put(e4);
 		empQueue.put(e5);
-		empQueue.put(e6);
+		empQueue.put(e6);*/
 		int size=empQueue.size();
 		latch  = new CountDownLatch(size);
 		for(int i=0; i <size; i++){
@@ -140,9 +140,9 @@ public class ThreadPoolTest implements Runnable{
 			threadPool.execute(t);
 			//System.out.println("executed");
 		}	
-		latch.await();
+		//latch.await();
 		System.out.println("Program Ended");
-		System.exit(0);
+		//System.exit(0);
 	}
 }
 

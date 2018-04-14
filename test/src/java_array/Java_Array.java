@@ -28,7 +28,8 @@ public static void main(String args[]){
 	list.add(1);
 	list.add(2);
 	list.add(3);
-	
+	list.size();
+	LinkedList list1 = new LinkedList(list);
 	Iterator itr=list.iterator();
 	while(itr.hasNext()){
 		itr.next();
