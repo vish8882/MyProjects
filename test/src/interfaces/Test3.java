@@ -1,21 +1,16 @@
 package interfaces;
 
-public class Test3 extends Thread {
+public class Test3  implements Test2{
 
 	public static void main(String[] args) {
-		
-		Test3 t1 = new Test3();
-		t1.start();
+
+	System.out.println(001<<001);
 	}
+
 	
-	@Override
-	public void run() {
+	public String method() {
 		// TODO Auto-generated method stub
-		System.out.println(" vola");
-		
+		return null;
 	}
 
-
-	
-	
 }

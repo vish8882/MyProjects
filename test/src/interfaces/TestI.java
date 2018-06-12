@@ -1,7 +1,7 @@
 package interfaces;
 
 interface TestInterfaces {
-	void display();
+	
 	
 
 	class testclass
@@ -21,10 +21,10 @@ interface TestInterfaces {
 		t1.display1();
 	}
 
-	@Override
-	public void display() {
+
+	/*public void display() {
 		// TODO Auto-generated method stub
 		
-	}
+	}*/
 	
 }

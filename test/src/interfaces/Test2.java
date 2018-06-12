@@ -1,8 +1,7 @@
 package interfaces;
 
-public interface Test2 {
+public interface Test2 extends Test1{
 
-	String a="Hello";
-	TestI display();
-	
+	Test1 a = new Test3();
+	public String method();
 }
