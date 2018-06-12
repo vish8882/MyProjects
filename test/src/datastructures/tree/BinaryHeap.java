@@ -6,141 +6,103 @@ package datastructures.tree;
 import java.util.Scanner;
 import java.util.Arrays;
 import java.util.NoSuchElementException;
+
+import com.sun.glass.ui.View.Capability;
  
 /** Class BinaryHeap **/
 class BinaryHeap    
 {
-    /** The number of children each node has **/
-    private static final int d = 2;
-    private int heapSize;
-    private int[] heap;
- 
-    /** Constructor **/    
-    public BinaryHeap(int capacity)
-    {
-        heapSize = 0;
-        heap = new int[capacity + 1];
-        Arrays.fill(heap, -1);
-    }
- 
-    /** Function to check if heap is empty **/
-    public boolean isEmpty( )
-    {
-        return heapSize == 0;
-    }
- 
-    /** Check if heap is full **/
-    public boolean isFull( )
-    {
-        return heapSize == heap.length;
-    }
- 
-    /** Clear heap */
-    public void makeEmpty( )
-    {
-        heapSize = 0;
-    }
- 
-    /** Function to  get index parent of i **/
-    private int parent(int i) 
-    {
-        return (i - 1)/d;
-    }
- 
-    /** Function to get index of k th child of i **/
-    private int kthChild(int i, int k) 
-    {
-        return d * i + k;
-    }
- 
-    /** Function to insert element */
-    public void insert(int x)
-    {
-        if (isFull( ) )
-            throw new NoSuchElementException("Overflow Exception");
-        /** Percolate up **/
-        heap[heapSize++] = x;
-        heapifyUp(heapSize - 1);
-    }
- 
-    /** Function to find least element **/
-    public int findMin( )
-    {
-        if (isEmpty() )
-            throw new NoSuchElementException("Underflow Exception");           
-        return heap[0];
-    }
- 
-    /** Function to delete min element **/
-    public int deleteMin()
-    {
-        int keyItem = heap[0];
-        delete(0);
-        return keyItem;
-    }
- 
-    /** Function to delete element at an index **/
-    public int delete(int ind)
-    {
-        if (isEmpty() )
-            throw new NoSuchElementException("Underflow Exception");
-        int keyItem = heap[ind];
-        heap[ind] = heap[heapSize - 1];
-        heapSize--;
-        heapifyDown(ind);        
-        return keyItem;
-    }
- 
-    /** Function heapifyUp  **/
-    private void heapifyUp(int childInd)
-    {
-        int tmp = heap[childInd];    
-        while (childInd > 0 && tmp < heap[parent(childInd)])
-        {
-            heap[childInd] = heap[ parent(childInd) ];
-            childInd = parent(childInd);
-        }                   
-        heap[childInd] = tmp;
-    }
- 
-    /** Function heapifyDown **/
-    private void heapifyDown(int ind)
-    {
-        int child;
-        int tmp = heap[ ind ];
-        while (kthChild(ind, 1) < heapSize)
-        {
-            child = minChild(ind);
-            if (heap[child] < tmp)
-                heap[ind] = heap[child];
-            else
-                break;
-            ind = child;
-        }
-        heap[ind] = tmp;
-    }
- 
-    /** Function to get smallest child **/
-    private int minChild(int ind) 
-    {
-        int bestChild = kthChild(ind, 1);
-        int k = 2;
-        int pos = kthChild(ind, k);
-        while ((k <= d) && (pos < heapSize)) 
-        {
-            if (heap[pos] < heap[bestChild]) 
-                bestChild = pos;
-            pos = kthChild(ind, k++);
-        }    
-        return bestChild;
-    }
- 
-    /** Function to print heap **/
-    public void printHeap()
-    {
-        System.out.print("\nHeap = ");
-        for (int i = 0; i < heapSize; i++)
-            System.out.print(heap[i] +" ");
-        System.out.println();
-    }     
+
+	public int[] heap;
+	private final static int d= 2;
+	public int heapSize;
+	
+	public BinaryHeap(){
+		
+	}
+	public BinaryHeap (int capacity){
+		heapSize=0;
+		heap = new int[capacity];
+		Arrays.fill(heap, -1);
+	}
+	
+	public void insert(int value){
+		if(heapSize > heap.length)
+			System.out.println("Heap is full");
+		heap[heapSize]=value;
+		heapSize=heapSize+1;
+		heapifyUp(heapSize-1);
+	}
+	
+	public int removeMinimum(){
+		int key = heap[0];
+		delete(0);
+		return key;
+	}
+	
+	public boolean isFull(){
+		return heapSize == heap.length;
+	}
+	
+	public boolean isEmpty(){
+		return heapSize==0;
+	}
+	
+	public void makeEmpty(){
+		heapSize=0;
+	}
+	
+	public void deleteItem(int value){
+		for(int i =0 ;i<heapSize-1;i++){
+			if(heap[i]==value){
+				delete(i);
+				break;
+			}
+		}
+	}
+	
+	public void printHeap(){
+		for(int i =0 ;i<heapSize;i++){
+			System.out.print(heap[i]+" ");
+		}
+	}
+	
+	public int child (int index, int k){
+		return d * index + k;
+	}
+	
+	public void delete(int index){
+		heap[index] = heap[heapSize - 1];
+		heapSize--;
+		heapifyDown(index);
+	}
+	
+	public int parent(int index){
+		return (index-1)/d;
+	}
+	
+	public void heapifyUp(int index){
+		int currentValue = heap[index];
+		while(index > 0 && currentValue < heap[parent(index)]){
+			heap[index ] = heap[parent(index)];
+			index = parent(index);
+		}
+		heap[index] = currentValue;
+	}
+	
+	public void heapifyDown(int index){
+		int currValue = heap[index];
+			while(child(index,1) < heapSize){
+				if(heap[child(index,1)] < currValue){
+					heap[index] = heap[child(index,1)];
+					index = child(index,1);
+				}
+				else if (heap[child(index,2)] < currValue){
+					heap[index] = heap[child(index,2)];
+					index=child(index,2);
+				}
+			}
+			heap[index] = currValue;
+	}
+
 }
