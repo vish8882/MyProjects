@@ -23,9 +23,7 @@ public class OverLappingRectangles {
 		//int[][] array = new int[1000][1000];
 		List<int[][]> list = findArrayLength(rectangle);
 		int overLappedAreaPositive = areaOfOverLapping(rectangle, list.get(0), true);
-		int overLappedAreaNegtive = areaOfOverLapping(rectangle, list.get(1), false);
-		int totalOverLappedArea = overLappedAreaPositive + overLappedAreaNegtive;
-		System.out.println(totalOverLappedArea);
+		System.out.println(overLappedAreaPositive);
 	}
 	
 	public static List<int[][]> findArrayLength(List<List<Integer>> rectangles){
