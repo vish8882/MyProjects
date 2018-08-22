@@ -40,13 +40,13 @@ public class CollectionThread implements Runnable{
 		queue.add(5);
 		queue.add(6);
 		queue.add(7);
-		System.out.println(queue);
+		//System.out.println(queue);
 		ExecutorService executor= Executors.newFixedThreadPool(5);
 		int i;
 		int l=queue.size();
-		for( i =0; i<l;i++){
-		Runnable thread= new CollectionThread();
-		executor.execute(thread);}
+		for (i = 0; i < l; i++) {
+			Runnable thread = new CollectionThread();
+			executor.execute(thread);}
 		System.out.println("I" +i);
 		executor.shutdown();
 		 while (!executor.isTerminated()) {  

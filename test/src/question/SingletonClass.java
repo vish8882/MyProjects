@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class SingletonClass implements Serializable {
 	
 	private SingletonClass(){
+		System.out.println("Example");
 	}
 	private static class SingletonHelperClass {
 		public static SingletonClass instance = new SingletonClass();
@@ -13,9 +14,9 @@ public class SingletonClass implements Serializable {
 			return SingletonHelperClass.instance;
 		}
 		
-		protected Object readResolve(){
+	/*	protected Object readResolve(){
 			return getInstance();
-		}
+		}*/
 	}
 	
 	

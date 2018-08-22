@@ -140,7 +140,7 @@ public class ThreadPoolTest implements Runnable{
 			threadPool.execute(t);
 			//System.out.println("executed");
 		}	
-		//latch.await();
+		latch.await();
 		System.out.println("Program Ended");
 		//System.exit(0);
 	}

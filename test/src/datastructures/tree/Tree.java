@@ -122,6 +122,131 @@ public class Tree {
 		}
 	}
 	
+	
+	public void buildTree(){
+		headNode=new TreeNode(1, null, null);
+		headNode.left = new TreeNode(2, null, null);
+		headNode.right =  new TreeNode(3, null, null);
+		headNode.left.left =  new TreeNode(4, null, null);
+		headNode.left.right =  new TreeNode(5, null, null);
+		headNode.right.right =  new TreeNode(6, null, null);
+		headNode.left.left.right =  new TreeNode(7, null, null);
+		headNode.left.left.right.left =  new TreeNode(8, null, null);
+		headNode.left.right.right =  new TreeNode(9, null, null);
+		headNode.left.left.left =  new TreeNode(10, null, null);
+		headNode.left.left.right.left.right =  new TreeNode(11, null, null);
+		headNode.left.right.left =  new TreeNode(12, null, null);
+		
+	}
+	
+	public  void printBoundary(){
+		Stack<TreeNode> s = new Stack<TreeNode>();
+		TreeNode node = headNode;
+		List<Integer> righNode = new LinkedList<Integer>();
+		boolean isOutside = true;
+		boolean empty=false;
+		while(!empty){
+			if(node!=null && isOutside){
+				s.push(node);
+				System.out.println(node.data+" ");
+				node=node.left;
+				isOutside=true;
+			}
+			else if(node!=null && !isOutside){
+				s.push(node);
+				node=node.left;
+				isOutside=false;
+				if(node!=null && node.right==null && node.left==null)
+					System.out.println(node.data+" ");
+			}
+			
+			else{
+				if(s.isEmpty())
+					empty=true;
+				else if(isOutside){
+				node=s.pop();
+				if(node.data==(headNode.data))
+				{
+					node=headNode;
+					empty=true;
+					continue;
+				}
+				if(node.left!=null)
+					isOutside = true;
+				else
+					isOutside = false;
+				node=node.right;
+				}
+				else if(!isOutside){
+					node=s.pop();
+					if(node.data==(headNode.data))
+					{
+						node=headNode;
+						empty=true;
+						continue;
+					}
+					node=node.right;
+					isOutside = false;
+					if(node!=null && node.right==null && node.left==null)
+						System.out.println(node.data+" ");
+				}
+			}
+		}
+		empty =false;
+		isOutside=true;
+		while(!empty){
+
+			if(node!=null && isOutside){
+				s.push(node);
+				righNode.add(node.data);
+				node=node.right;
+				isOutside=true;
+			}
+			else if(node!=null && !isOutside){
+				s.push(node);
+				node=node.right;
+				isOutside=false;
+				if(node!=null && node.right==null && node.left==null)
+					System.out.println(node.data+" ");
+			}
+			
+			else{
+				if(s.isEmpty())
+					empty=true;
+				else if(isOutside){
+				node=s.pop();
+				if(node.data==(headNode.data))
+				{
+					empty=true;
+					continue;
+				}
+				if(node.right!=null)
+					isOutside = true;
+				else
+					isOutside = false;
+				node=node.left;
+				}
+				else if(!isOutside){
+					node=s.pop();
+					if(node.data==(headNode.data))
+					{
+						empty=true;
+						continue;
+					}
+					node=node.left;
+					isOutside = false;
+					if(node!=null && node.right==null && node.left==null)
+						righNode.add(node.data);
+				}
+			}
+		
+		}
+		for(int i= righNode.size()-1; i > 0 ; i--)
+			System.out.println(righNode.get(i));
+	}
+	
+	
+	
 	public void levelOrderTraverdal() throws Exception{
 		TreeNode node = headNode;
 		BlockingQueue<TreeNode> q = new LinkedBlockingQueue();

@@ -10,7 +10,7 @@ import java.lang.reflect.Constructor;
 
 public class SingletonTest {
 	public static void main(String[] args) throws Exception {
-		SingletonClass object = SingletonClass.getInstance();
+		/*SingletonClass object = SingletonClass.getInstance();
 		System.out.println(object.hashCode());
 		
 		ObjectOutput out = new ObjectOutputStream(new FileOutputStream("filename.ser"));
@@ -22,7 +22,7 @@ public class SingletonTest {
                 "filename.ser"));
         SingletonClass object2 = (SingletonClass) in.readObject();
         in.close();
-        System.out.println(object2.hashCode());
+        System.out.println(object2.hashCode())*/;
         
         SingletonClass object3=null;
         try{
@@ -34,7 +34,7 @@ public class SingletonTest {
         catch(Exception e){
         	e.printStackTrace();
         }
-        System.out.println(object3.hashCode());
+       // System.out.println(object3.hashCode());
 	}
 
 }

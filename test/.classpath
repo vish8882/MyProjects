@@ -2,10 +2,5 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="D:/Others/tests/poi-3.9.jar"/>
-	<classpathentry kind="lib" path="D:/Others/tests/fscontext.jar"/>
-	<classpathentry kind="lib" path="D:/Others/tests/sqljdbc42.jar"/>
-	<classpathentry kind="lib" path="D:/Others/tests/junit-4.12.jar" sourcepath="D:/Others/tests/junit-4.12-sources.jar"/>
-	<classpathentry kind="lib" path="D:/Others/tests/hamcrest-all-1.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

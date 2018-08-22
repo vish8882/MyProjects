@@ -16,7 +16,7 @@ public class MapComparator {
 		MapComparator map= new MapComparator();
 		LinkedList list = new LinkedList();
 		list.add(1);
-		Map<String, Integer> unsortMap = new HashMap<String, Integer>();
+		HashMap<String, Integer> unsortMap = new HashMap<String, Integer>();
         unsortMap.put("z", 10);
         unsortMap.put("b", 5);
         unsortMap.put("a", 6);
