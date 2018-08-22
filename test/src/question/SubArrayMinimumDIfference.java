@@ -3,7 +3,7 @@ package question;
 import java.util.*;
 
 public class SubArrayMinimumDIfference {
-	static int[] arr = {1,6,11,4,13,10};
+	static int[] arr = {1,6,11,5};
 	static int diff=0;
 	static List<List<String>> finalList = null;
 	static List<String> list1 = new LinkedList<String>();
@@ -24,6 +24,7 @@ public class SubArrayMinimumDIfference {
 			System.out.println();
 		}
 		System.out.println("Difference = "+ diff);
+		System.out.println(dp(0, 0, 0));
 	}
 	
 	public static void findMinimumDifference(int n, int sum1, int sum2,boolean include){		
@@ -47,5 +48,9 @@ public class SubArrayMinimumDIfference {
 		findMinimumDifference(n+1, sum1+arr[n+1], sum2-arr[n+1], true);
 		findMinimumDifference(n+1, sum1, sum2, false);
 	}
-
+	public static int dp(int n, int sum1, int sum2){
+		if(n>=arr.length) 
+			return Math.abs(sum1-sum2);
+		return Math.min(dp(n+1, sum1+arr[n], sum2), dp(n+1, sum1, sum2+arr[n]));
+	}
 }
