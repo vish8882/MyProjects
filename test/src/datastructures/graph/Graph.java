@@ -40,19 +40,29 @@ public class Graph {
 	
 	public static void main(String[] args) {
 		Graph graph = new Graph();
+		Node node0= new Node("0");
 		Node node1= new Node("1");
 		Node node2= new Node("2");
 		Node node3= new Node("3");
 		Node node4= new Node("4");
 		Node node5= new Node("5");
-		graph.add(node3, node2);
-		graph.add(node2, node4);
+		Node node6= new Node("6");
+		Node node7= new Node("7");
+		graph.add(node2, node1);
+		graph.add(node1, node0);
+		graph.add(node0, node3);
+		graph.add(node3, node7);
+		graph.add(node3, node4);
+		graph.add(node7, node4);
+		graph.add(node7, node6);
+		graph.add(node4, node6);
 		graph.add(node4, node5);
-		graph.add(node1, node5);
-		graph.add(node2, node5);
-		graph.findAllNodes(node3);
-		/*System.out.println(graph.findMinimumPath(node2, node1,0));
-		System.out.println("Minimum Path= "+minPath);*/
+		graph.add(node6, node5);
+		
+		//graph.add(node2, node5);
+		//graph.findAllNodes(node3);
+		System.out.println(graph.findMinimumPath(node2, node6,0));
+		System.out.println("Minimum Path= "+minPath);
 		/*minPath=5;
 		System.out.println(graph.findMinimumPath(node3, node5,0));
 		System.out.println("Minimum Path= "+minPath);*/
@@ -85,6 +95,7 @@ public class Graph {
 					if(!node.visited){
 						count++;
 						findMinimumPath(node, dest, count);
+						node.visited= false;
 						count--;
 					/*	if((count=findPath(node, dest, count))>0)
 							return count;*/
