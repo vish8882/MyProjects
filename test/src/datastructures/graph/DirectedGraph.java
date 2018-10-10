@@ -13,6 +13,16 @@ public class DirectedGraph {
 		String value;
 		boolean isVisited;
 	}
+	static class Edges{
+		String weight;
+		Node source;
+		Node dest;
+		public Edges(Node source, Node dest, String weight){
+			this.source = source;
+			this.dest = dest;
+			this.weight = weight;
+		}
+	}
 	
 	public static void main(String[] args) {
 		DirectedGraph directedGraph = new DirectedGraph();
@@ -29,14 +39,16 @@ public class DirectedGraph {
 		directedGraph.add(node4, node5);
 		directedGraph.add(node3, node4);
 		directedGraph.add(node5, node6);
+		directedGraph.add(node1, node3);
 		Queue<Node> queue = new LinkedBlockingQueue<Node>();
 		queue.add(node3);
 		queue.add(new Node(""));
 		Stack<Node> stack =  new Stack<Node>();
 		stack.push(node3);
 		//directedGraph.depthFirstSearch(stack);
-		directedGraph.minimumPathBFS(queue, node6, minCount);
-		System.out.println(minCount);
+		//directedGraph.minimumPathBFS(queue, node6, minCount);
+		System.out.println(directedGraph.detectCycles(node3));
+		//System.out.println(minCount);
 	}
 	
 	public boolean add(Node source, Node dest){
@@ -87,22 +99,44 @@ public class DirectedGraph {
 		minimumPathBFS(queue, dest, count);
 	}
 	
-	public void depthFirstSearch(Stack<Node> stack){
-		Node node=null;
-		if(!stack.isEmpty())
+	public void depthFirstSearch(Stack<Node> stack) {
+		Node node = null;
+		if (!stack.isEmpty())
 			node = stack.pop();
-		if(node==null)
+		if (node == null)
 			return;
-		if(!node.isVisited){
-			node.isVisited=true;
+		if (!node.isVisited) {
+			node.isVisited = true;
 			System.out.println(node.value);
 			List<Node> list = this.graphMap.get(node);
 			if (list != null) {
 				for (Node n : list)
 					stack.push(n);
 			}
+		} else {
+			System.out.println(node.value + " was visited earlier");
 		}
 		depthFirstSearch(stack);
-		
+	}
+	
+	public boolean detectCycles(Node node){
+		if (node == null)
+			return false;
+		if (!node.isVisited) {
+			node.isVisited = true;
+			List<Node> list = this.graphMap.get(node);
+			if (list != null) {
+				for (Node n : list){
+					if(detectCycles(n))
+						return true;
+					node.isVisited=false;
+				}
+			}
+			else
+				node.isVisited=false;
+		} else {
+			return true;
+		}
+		return false;
 	}
 }
