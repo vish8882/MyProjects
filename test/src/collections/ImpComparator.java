@@ -78,7 +78,7 @@ public class ImpComparator {
 		list.add(e4);
 		list.add(e5);
 		list.add(e6);
-		Collections.sort(list);
+		Collections.sort(list, new CompareId());
 		Iterator<Employees> itr= list.iterator();
 		while(itr.hasNext()){
 			Employees e= itr.next();

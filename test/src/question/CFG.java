@@ -48,5 +48,3 @@ public class CFG {
 		isSubsetSum(set, 0, 0) ;
 	}
 }
-
-/* This code is contributed by Rajat Mishra */

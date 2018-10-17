@@ -8,6 +8,10 @@ public class MyClassTest {
    /* Driver program  */
    public static void main(String[] args) 
    {
-	   System.out.println((((1^2)^3)^4));
+	  List<String> list = null;
+	  for(String s: list){
+		  if(s==null)
+			  System.out.println("Null");
+	  }
    }
 }
