@@ -3,7 +3,7 @@ package datastructures.graph;
 import java.util.*;
 
 public class DisjointSet {
-	Set<Node> set = new HashSet<Node>();
+	Map<Integer,Node> map = new HashMap<Integer,Node>();
 	static class Node {
 		int value;
 		Node parent;
@@ -15,11 +15,11 @@ public class DisjointSet {
 		node.value = value;
 		node.level = 0;
 		node.parent=node;
-		set.add(node);
+		map.put(node.value, node);
 	}
-	public void union(Node a, Node b) {
-		Node parent1 = findSet(a);
-		Node parent2 = findSet(b);
+	public void union(int value1, int value2) {
+		Node parent1 = findSet(map.get(value1));
+		Node parent2 = findSet(map.get(value2));
 		if (parent1 == parent2)
 			return;
 		if (parent1.level >= parent2.level) {
