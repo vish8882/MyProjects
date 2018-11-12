@@ -2,31 +2,28 @@ package datastructures.tree;
 /**
  *  Java Program to Implement Binary Heap
  */
- 
-import java.util.Scanner;
-import java.util.Arrays;
-import java.util.NoSuchElementException;
 
-import com.sun.glass.ui.View.Capability;
+import java.util.Arrays;
+
  
 /** Class BinaryHeap **/
-class BinaryHeap
+public class BinaryHeap<T extends Comparable<T>>
 {
 
-	public Object[] heap;
+	public T[] heap;
 	private final static int d= 2;
 	public int heapSize;
 	
 	public BinaryHeap(){
 		
 	}
-	public BinaryHeap (int capacity){
+	public BinaryHeap (T[] object){
 		heapSize=0;
-		heap = new Object[capacity];
+		heap = object;
 		Arrays.fill(heap, -1);
 	}
 	
-	public void insert(Object obj){
+	public void insert(T obj){
 		if(heapSize > heap.length)
 			System.out.println("Heap is full");
 		heap[heapSize]=obj;
@@ -52,7 +49,7 @@ class BinaryHeap
 		heapSize=0;
 	}
 	
-	public void deleteItem(Object obj){
+	public void deleteItem(T obj){
 		for(int i =0 ;i<heapSize-1;i++){
 			if(heap[i].equals(obj)){
 				delete(i);
@@ -81,39 +78,25 @@ class BinaryHeap
 		return (index-1)/d;
 	}
 	
-	/**
-	 * Return true if Object1 is less than Object2
-	 * @param obj1 
-	 * @param obj2
-	 * @return
-	 */
-	public boolean isLessThan(Object obj1, Object obj2){
-		if(obj1 instanceof Integer)
-			if(((Integer)obj1).compareTo((Integer)obj2) < 1)
-				return true;
-		if(obj1 instanceof String)
-			if(((String)obj1).compareTo((String)obj2) < 1)
-				return true;
-		return false;
-	}
-	
+
 	public void heapifyUp(int index){
-		Object currentValue = heap[index];
-		while(index > 0 && isLessThan(currentValue, heap[parent(index)])){
+		T currentValue = heap[index];
+		while(index > 0 && currentValue.compareTo(heap[parent(index)]) < 1){
 			heap[index ] = heap[parent(index)];
 			index = parent(index);
 		}
 		heap[index] = currentValue;
 	}
 	
+
 	public void heapifyDown(int index){
-		Object currValue = heap[index];
+		T currValue = heap[index];
 			while(child(index,1) < heapSize){
-				if(isLessThan(heap[child(index,1)], currValue)){
+				if(heap[child(index,1)].compareTo(currValue)<1){
 					heap[index] = heap[child(index,1)];
 					index = child(index,1);
 				}
-				else if (isLessThan(heap[child(index,2)], currValue)){
+				else if (heap[child(index,2)].compareTo(currValue)<1){
 					heap[index] = heap[child(index,2)];
 					index=child(index,2);
 				}
