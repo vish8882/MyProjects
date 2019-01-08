@@ -3,15 +3,29 @@ package datastructures.graph;
 import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
 
+import datastructures.tree.BinaryHeap;
+import datastructures.tree.BinaryHeapTest;
+
 public class DirectedGraph {
 	static int minCount=0;
 	Map<Node,List<Node>> graphMap;
-	static class Node{
+	private List<Node> nodeList;
+	
+	public DirectedGraph(){
+		this.graphMap = new HashMap<Node,List<Node>>();
+	}
+	
+	public static class Node implements Comparable<Node>{
 		public Node(String value){
 			this.value = value;
 		}
 		String value;
 		boolean isVisited;
+		@Override
+		public int compareTo(Node o) {
+			return this.value.compareTo(o.value);
+		}
+		
 	}
 	static class Edges{
 		String weight;
@@ -26,7 +40,6 @@ public class DirectedGraph {
 	
 	public static void main(String[] args) {
 		DirectedGraph directedGraph = new DirectedGraph();
-		directedGraph.graphMap = new HashMap<Node,List<Node>>();
 		Node node1= new Node("1");
 		Node node2= new Node("2");
 		Node node3= new Node("3");
@@ -43,15 +56,22 @@ public class DirectedGraph {
 		Queue<Node> queue = new LinkedBlockingQueue<Node>();
 		queue.add(node3);
 		queue.add(new Node(""));
+		directedGraph.breadthFirstSearch(queue);
 		Stack<Node> stack =  new Stack<Node>();
 		stack.push(node3);
 		//directedGraph.depthFirstSearch(stack);
 		//directedGraph.minimumPathBFS(queue, node6, minCount);
-		System.out.println(directedGraph.detectCycles(node3));
+		//System.out.println(directedGraph.detectCycles(node3));
 		//System.out.println(minCount);
 	}
 	
+	public List<Node> getNodeList(){
+		return nodeList;
+	}
 	public boolean add(Node source, Node dest){
+		if(nodeList==null)
+			nodeList= new ArrayList<Node>();
+		nodeList.add(source);
 		List<Node> list = this.graphMap.get(source);
 		if(list == null){
 			list = new LinkedList<Node>();
