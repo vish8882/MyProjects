@@ -32,9 +32,5 @@ public class RotateArray90Degree {
 			}
 		}
 	}
-	
-	public void swap(int a, int b) {
-		
-	}
 
 }
