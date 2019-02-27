@@ -52,6 +52,7 @@ public class TextJustification {
 			}
 			minimumSpace[i] = minimumTillNow;
 		}
+		System.out.println();
 	}
 	
 }

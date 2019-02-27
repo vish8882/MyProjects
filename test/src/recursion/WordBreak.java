@@ -1,4 +1,4 @@
-package question;
+package recursion;
 
 import java.util.*;
 
