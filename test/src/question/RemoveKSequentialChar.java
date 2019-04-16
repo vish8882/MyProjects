@@ -12,6 +12,7 @@ import java.util.Stack;
 import javafx.util.Pair;
 
 public class RemoveKSequentialChar {
+	
 	public static void main(String[] args) {
     	String[] a= {"a","b","c","c","d","d","e","e", "e","e","d", "c","b", "f","g","f"};
     	List<String> inputArray = new ArrayList<String>(Arrays.asList(a));
