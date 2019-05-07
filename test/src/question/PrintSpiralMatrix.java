@@ -11,7 +11,7 @@ public class PrintSpiralMatrix {
 		int k = 3;
 		int up = 0, down = n-1, left = 0, right = k-1;
 		int j = 0;
-		boolean start =true;
+		boolean start =true; 
 		while (up <= down && left <= right) {
 			start=false;
 			for (int i = left; i <= right; i++) {
