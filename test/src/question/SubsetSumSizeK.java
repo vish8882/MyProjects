@@ -29,7 +29,7 @@ public class SubsetSumSizeK {
 			return;
 		}
 		for(int j=i;j<arr.length;j++) {
-			findSubSetSizeK(arr, j+1, k, sum*10 + arr[j], numOfDigits+1);
+			findSubSetSizeK(arr, j+1, k, sum + arr[j], numOfDigits+1);
 		}
 			
 	}
