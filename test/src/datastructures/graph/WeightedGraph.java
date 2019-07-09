@@ -8,17 +8,28 @@ public class WeightedGraph {
 	Map<Node,List<Node>> graphMap;
 	Map<Node,List<Edges>> weightedGraphMap;
 	private List<Edges> edgeList;
+	private static List<Node> verticesList;
 	
 	public WeightedGraph(){
 		this.edgeList = new ArrayList<Edges>();
+		this.verticesList = new ArrayList<Node>();
 	}
 	
-	static class Node{
+	public List<Node> getVerticesList (){
+		return verticesList;
+	}
+	
+	static class Node implements Comparable<Node>{
 		public Node(String value){
 			this.value = value;
+			verticesList.add(this);
 		}
 		String value;
 		boolean isVisited;
+		@Override
+		public int compareTo(Node o) {
+			return this.value.compareTo(o.value);
+		}
 	}
 	static class Edges{
 		int weight;
@@ -70,7 +81,7 @@ public class WeightedGraph {
 	public void addEdge(Node source, Node dest, int weight) {
 		List<Edges> list = weightedGraphMap.get(source);
 		if (list == null) {
-			list = new LinkedList<Edges>();
+			list = new ArrayList<Edges>();
 		}
 		list.add(new Edges(source, dest, weight));
 		this.weightedGraphMap.put(source, list);
@@ -80,10 +91,10 @@ public class WeightedGraph {
 		List<Edges> listSource = weightedGraphMap.get(source);
 		List<Edges> listDest = weightedGraphMap.get(dest);
 		if (listSource == null) {
-			listSource = new LinkedList<Edges>();
+			listSource = new ArrayList<Edges>();
 		}
 		if (listDest == null) {
-			listDest = new LinkedList<Edges>();
+			listDest = new ArrayList<Edges>();
 		}
 		Edges sourceEdge = new Edges(source, dest, weight);
 		this.edgeList.add(sourceEdge);
