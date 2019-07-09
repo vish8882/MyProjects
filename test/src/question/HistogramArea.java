@@ -5,7 +5,7 @@ import java.util.Stack;
 public class HistogramArea {
 	
 	public static void main(String[] args) {
-		int [] hist={2,1,2,3,1};
+		int [] hist={6,2,5,4,5,1,6};
 		findMaxArea(hist);
 	}
 
