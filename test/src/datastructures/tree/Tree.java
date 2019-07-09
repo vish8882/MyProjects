@@ -122,6 +122,26 @@ public class Tree {
 		}
 	}
 	
+	public void inOrder(TreeNode node) {
+		if(node == null)
+			return;
+		inOrder(node.left);
+		System.out.print(node.data+" ");
+		inOrder(node.right);
+	}
+	
+	public int kSmallestElement(TreeNode node, int count, int k) {
+		if(node == null) 
+			return count;
+		count = kSmallestElement(node.left, count, k);
+		count++;
+		if (count == k) {
+			System.out.print(node.data + " ");
+			return count;
+		}
+		count = kSmallestElement(node.right, count, k);
+		return count;
+	}
 	
 	public void buildTree(){
 		headNode=new TreeNode(1, null, null);
@@ -136,6 +156,24 @@ public class Tree {
 		headNode.left.left.left =  new TreeNode(10, null, null);
 		headNode.left.left.right.left.right =  new TreeNode(11, null, null);
 		headNode.left.right.left =  new TreeNode(12, null, null);
+		
+	}
+	
+	public void buildTree1(){
+		headNode=new TreeNode(1, null, null);
+		headNode.left = new TreeNode(2, null, null);
+		headNode.right =  new TreeNode(3, null, null);
+		headNode.left.left =  new TreeNode(4, null, null);
+		headNode.left.right =  new TreeNode(5, null, null);
+		headNode.left.right.left =  new TreeNode(11, null, null);
+		headNode.left.right.left.left =  new TreeNode(14, null, null);
+		headNode.left.right.right =  new TreeNode(12, null, null);
+		headNode.left.right.right.left =  new TreeNode(13, null, null);
+		headNode.right.right =  new TreeNode(7, null, null);
+		headNode.right.left =  new TreeNode(6, null, null);
+		headNode.left.left.right =  new TreeNode(8, null, null);
+		headNode.left.left.right.right =  new TreeNode(9, null, null);
+		headNode.left.left.right.right.right =  new TreeNode(10, null, null);
 		
 	}
 	
@@ -489,13 +527,18 @@ public class Tree {
 		int len2= Math.max(diameter(node.left), diameter(node.right));
 		return Math.max(len1, len2);
 	}
+	int diameter = 0;
+	public int diameterNew(TreeNode node) {
+		if(node == null)
+			return 0;
+	diameter = Math.max(diameter, height(node.left)+height(node.right)+1);
+	return diameter;
+	}
 	
 	public static int height (TreeNode node){
 		if(node==null)
 			return 0;
-		int left=height(node.left);
-		int right = height(node.right);
-		return Math.max(left+1, right+1);
+		return Math.max(height(node.left)+1, height(node.right)+1);
 	}
 	
 	public void printAllPath(){
