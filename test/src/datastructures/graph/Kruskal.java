@@ -1,5 +1,13 @@
 package datastructures.graph;
-
+/**
+ * Kruskal's method of creating an MST.
+ * 1. Sort the edges according to their weight.
+ * 2. Create a disjoint set of all the vertices.
+ * 3. Pull the edges from the sorted edges list one by one and check whether the vertices belong to the same
+ * 	  set or not.
+ * 4. If they belong to the same set then move on to the next edge in the list
+ * 5. Else put the edge in the MST list and also put the vertices of that edge to the same disjoint set.
+ */
 import java.util.*;
 
 import datastructures.graph.WeightedGraph.Edges;
