@@ -56,10 +56,12 @@ public class DirectedGraph {
 		Queue<Node> queue = new LinkedBlockingQueue<Node>();
 		queue.add(node3);
 		queue.add(new Node(""));
-		directedGraph.breadthFirstSearch(queue);
+		//directedGraph.breadthFirstSearch(queue);
 		Stack<Node> stack =  new Stack<Node>();
 		stack.push(node3);
-		//directedGraph.depthFirstSearch(stack);
+		directedGraph.depthFirstSearcRecurse(node3, new HashSet<Node>());
+		System.out.println();
+		directedGraph.depthFirstSearch(stack);
 		//directedGraph.minimumPathBFS(queue, node6, minCount);
 		//System.out.println(directedGraph.detectCycles(node3));
 		//System.out.println(minCount);
@@ -74,7 +76,7 @@ public class DirectedGraph {
 		nodeList.add(source);
 		List<Node> list = this.graphMap.get(source);
 		if(list == null){
-			list = new LinkedList<Node>();
+			list = new ArrayList<Node>();
 		} 
 		list.add(dest);
 		this.graphMap.put(source, list);
@@ -127,16 +129,30 @@ public class DirectedGraph {
 			return;
 		if (!node.isVisited) {
 			node.isVisited = true;
-			System.out.println(node.value);
+			System.out.print(node.value+"-->");
 			List<Node> list = this.graphMap.get(node);
+			//pushing in reverse so the output matches with recursion
 			if (list != null) {
-				for (Node n : list)
-					stack.push(n);
+				for(int i= list.size()-1; i >=0; i--)
+					stack.push(list.get(i));
 			}
-		} else {
-			System.out.println(node.value + " was visited earlier");
 		}
 		depthFirstSearch(stack);
+	}
+	
+	public void depthFirstSearcRecurse(Node node, Set<Node> visited) {
+		if(node == null)
+			return;
+		if(!visited.contains(node)) {
+			visited.add(node);
+			System.out.print(node.value+"-->");
+			if (graphMap.containsKey(node)) {
+				List<Node> list = graphMap.get(node);
+				for (Node n : list){
+					depthFirstSearcRecurse(n, visited);
+				}
+			}
+		}
 	}
 	
 	public boolean detectCycles(Node node){
