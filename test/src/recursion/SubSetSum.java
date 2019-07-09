@@ -32,7 +32,6 @@ public class SubSetSum {
 	public static void main(String[] args) {
 		int[] arr = {1,2,5,7,8};
 		subSet(arr, 0, 0);
-		
 	}
 
 }
