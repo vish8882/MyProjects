@@ -28,11 +28,10 @@ class ThreadPooling {
         if(this.isStopped) throw
             new IllegalStateException("ThreadPool is stopped");
       //  System.out.println("Before take"+queue.size());
-        if(this.queue.offer(task))
-        {}
-        else{
+        if(!this.queue.offer(task))
+        {
         	Thread.sleep(1000);
-        this.queue.put(task);
+        	this.queue.put(task);
         }
     }
 	public synchronized void stop(){
