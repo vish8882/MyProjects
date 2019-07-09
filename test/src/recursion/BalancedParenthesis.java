@@ -4,10 +4,12 @@
  */ 
 package recursion;
 
-public class BalancedParenthesis {
+import com.oracle.webservices.internal.api.databinding.Databinding.Builder;
 
+public class BalancedParenthesis {
+	static StringBuilder builder = new StringBuilder();
 	public static void main(String[] args) {
-		int n = 2;
+		int n = 4;
 		char[] str = new char[n * 2];
 		balancedParathesis(str, 0, 0, n, 0, 0);
 	}
@@ -15,8 +17,10 @@ public class BalancedParenthesis {
 	public static void balancedParathesis(char[] str, int open, int close, int n, int pos, int prevPos) {
 		if (close == n) {
 			for (int i = 0; i < n * 2; i++) {
+				builder.append(str[i]);
 				System.out.print(str[i]);
 			}
+			builder = new StringBuilder();
 			System.out.println();
 			str = new char[n * 2];
 		}
