@@ -1,5 +1,6 @@
 package thread;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.LinkedBlockingQueue;
  
 /**
@@ -8,6 +9,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 class ProducerQueue implements Runnable {
  
     private final BlockingQueue<Integer> sharedQueue;
+    ConcurrentHashMap<String, String> map = new ConcurrentHashMap<>();
  
     public ProducerQueue(BlockingQueue<Integer> sharedQueue) {
         this.sharedQueue = sharedQueue;
@@ -15,6 +17,7 @@ class ProducerQueue implements Runnable {
  
     @Override
     public void run() {
+    	map.put("", "");
         for(int i=1; i<=10; i++){
          try {
              System.out.println("Produced : " + i);
