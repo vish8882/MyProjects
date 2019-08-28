@@ -3,7 +3,7 @@ package question;
 public class DutchFlagProblem {
 
 	public static void main(String[] args) {
-		int[] arr = {2,2,2,2,2,1,1, 1, 1, 0, 1, 2, 1, 2 , 2, 2,2, 1,1};
+		int[] arr = {2,0,2,2,2,1,1, 1, 1, 0, 1, 2, 1, 2 , 2, 2,2, 1,1};
 		int i=0,j=1,k=arr.length-1;
 		while(i < j && j < k) {
 			if(arr[i] == 0){
