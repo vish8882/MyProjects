@@ -1,4 +1,6 @@
-import test.Tree.TreeNode;
+package datastructures.tree;
+
+import datastructures.tree.Tree.TreeNode;
 
 public class UpdateRightSibling {
 	

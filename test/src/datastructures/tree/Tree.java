@@ -17,6 +17,7 @@ public class Tree {
 		public int data;
 		public TreeNode left;
 		public TreeNode right;
+		public TreeNode rightSibling;
 		public TreeNode (int data, TreeNode left, TreeNode right){
 			this.data=data;
 			this.left=left;
@@ -175,6 +176,17 @@ public class Tree {
 		headNode.left.left.right.right =  new TreeNode(9, null, null);
 		headNode.left.left.right.right.right =  new TreeNode(10, null, null);
 		
+	}
+	
+	public void buildBalanceTree() {
+		headNode=new TreeNode(1, null, null);
+		headNode.left = new TreeNode(2, null, null);
+		headNode.right =  new TreeNode(3, null, null);
+		headNode.left.left = new TreeNode(4, null, null);
+		headNode.left.right = new TreeNode(5, null, null);
+		headNode.left.left.left = new TreeNode(7, null, null);
+		headNode.left.left.right = new TreeNode(8, null, null);
+		headNode.right.right =  new TreeNode(6, null, null);
 	}
 	
 	public  void printBoundary(){
