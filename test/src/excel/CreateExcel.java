@@ -7,7 +7,6 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
-import org.apache.poi.hssf.util.Region;
 
 //import com.highmark.ebt.util.HMUtilFonts;
 
@@ -46,8 +45,6 @@ public class CreateExcel {
 		cell =row.createCell((short)0);
 		
 		cell.setCellValue(cards[i]);
-		Region region = new Region(i+2,(short) 0, i+2,(short) 1);
-		sheet.addMergedRegion(region);
 		}
 		
 	

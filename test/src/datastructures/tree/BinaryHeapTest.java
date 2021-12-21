@@ -7,7 +7,7 @@ public class BinaryHeapTest
 {
     public static void main(String[] args)
     {
-    	BinaryHeap bh = new BinaryHeap(6);
+    	BinaryHeap bh = new BinaryHeap();
     	bh.insert(3);
     	bh.insert(1);
     	bh.insert(6);
